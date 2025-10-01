@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Rostyslav Tarasov — Portfolio</title>
+    <meta name="description" content="Personal portfolio — aspiring software developer. Projects: Schedule app, Weather Web-Portal, ReFind." />
+    <style>
+        #typed {
+            display: inline-block;
+            min-width: 0;
+            vertical-align: bottom;
+            border-right: 2px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        #typed.blink {
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+
+        :root{
+            --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.03);
+            --radius:14px;
+            --glass-2: rgba(255,255,255,0.02);
+        }
+        *{box-sizing:border-box}
+        html,body{height:100%;margin:0;font-family:Inter,Segoe UI, system-ui, Roboto, "Helvetica Neue", Arial;color:#e6eef6;background:linear-gradient(180deg,#071026 0%, #071228 40%, #071226 100%);-webkit-font-smoothing:antialiased}
+        a{color:inherit}
+        .container{max-width:1100px;margin:0 auto;padding:28px}
+
+        /* Header */
+        header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+        .brand{display:flex;gap:12px;align-items:center}
+        .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#06202a}
+        .nav{display:flex;gap:16px;align-items:center}
+        .nav a{color:var(--muted);text-decoration:none;font-weight:600}
+        .cta{background:linear-gradient(90deg, #3af1f4, #67afff);padding:10px 14px;border-radius:10px;color: #000000 !important;text-decoration:none;font-weight:700}
+
+        /* Hero */
+        .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+        .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);padding:32px;backdrop-filter: blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+        h1{margin:0;font-size:40px;line-height:1.05}
+        .tagline{color:var(--muted);margin-top:10px;font-size:16px}
+        .actions{margin-top:20px;display:flex;gap:12px}
+        .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+        .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent)}
+        .btn-primary{background:var(--accent);color:#002022}
+
+        .hero-aside{display:flex;flex-direction:column;gap:18px}
+        .profile-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);}
+        .avatar{width:88px;height:88px;border-radius:14px;background:linear-gradient(135deg,#60a5fa,#8b5cf6);display:flex;align-items:center;justify-content:center;font-weight:800;color:#021627;font-size:20px}
+        .meta{margin-left:14px}
+        .row{display:flex;align-items:center}
+        .small{font-size:13px;color:var(--muted)}
+
+        /* Sections */
+        section{margin-top:34px}
+        .section-title{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+        .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+        .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.5)}
+        .skill-pill{display:inline-block;padding:8px 10px;border-radius:999px;margin:6px 6px 0 0;font-weight:700;background:var(--glass);font-size:13px;color:var(--accent)}
+
+        /* Projects */
+        .project-thumb{height:140px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0b1220,#06202a);color:var(--muted);font-weight:700}
+        .project-meta{margin-top:10px}
+        .project-actions{margin-top:12px;display:flex;gap:8px}
+        .link-btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);font-weight:700}
+
+        /* Contact */
+        .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+        .field{display:flex;flex-direction:column;gap:6px}
+        input,textarea{background:var(--glass-2);border:1px solid rgba(255,255,255,0.03);padding:10px;border-radius:8px;color:#eaf6ff}
+        textarea{min-height:120px}
+
+        footer{margin-top:36px;text-align:center;color:var(--muted);font-size:13px}
+
+        /* Modal */
+        .modal-back{position:fixed;inset:0;background:rgba(1,5,10,0.6);display:flex;align-items:center;justify-content:center;z-index:60;}
+        .modal{width:860px;max-width:94%;background:#071226;padding:18px;border-radius:12px}
+
+        /* Responsive */
+        @media (max-width:920px){.hero{grid-template-columns:1fr;}.hero-aside{order:-1}.contact-grid{grid-template-columns:1fr}.container{padding:18px}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="brand">
+            <div class="logo">RT</div>
+            <div>
+                <div style="font-weight:800">Rostyslav Tarasov</div>
+                <div style="font-size:13px;color:var(--muted)">Aspiring Software Developer</div>
+            </div>
+        </div>
+        <nav class="nav">
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <a class="cta" href="#contact">Hire me</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-card">
+                <h1>Hello — I'm Rostyslav<br/>
+                    <span id="typed" style="color:var(--accent);">Aspiring Software Developer</span>
+                </h1>
+                <p class="tagline">I build small but meaningful projects — Python scripts, c++/java console apps. I love turning ideas into working code.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="#projects">View my work</a>
+                    <a class="btn btn-outline" href="#contact">Get in touch</a>
+                </div>
+
+                <div style="margin-top:22px" class="cards">
+                    <div class="card">
+                        <div style="font-weight:800">Focused on growth</div>
+                        <div class="small">Currently learning Machine & Deep Learning.</div>
+                    </div>
+                    <div class="card">
+                        <div style="font-weight:800">Scripts fan</div>
+                        <div class="small">I like creating small tools for automation using Python.</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-aside">
+                <div class="profile-card row">
+                    <div class="avatar">RT</div>
+                    <div class="meta">
+                        <div style="font-weight:800">Rostyslav Tarasov</div>
+                        <div class="small">Kharkiv, Ukraine • Actively looking for junior/mid roles</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="font-weight:800">Quick facts</div>
+                    <div class="small" style="margin-top:8px">• Comfortable with Python, JS, C++<br/>• Built Python Scripts & Web apps<br/>• Solved tons of different tasks</div>
+                </div>
+
+                <div class="card" style="text-align:center">
+                    <div style="font-weight:800">Let's chat</div>
+                    <div class="small">Email — <a href="mailto:rostyslav.tarasov.l@gmail.com">rostyslav.tarasov.l@gmail.com</a></div>
+                    <div style="margin-top:10px">
+                        <a class="link-btn" href="https://github.com/loppify" target="_blank">GitHub 1</a>
+                        <a class="link-btn" href="https://github.com/NureTarasovRostyslav" target="_blank">GitHub 2</a>
+                        <a class="link-btn" href="https://t.me/nero_lt">Telegram</a>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <section id="skills">
+            <div class="section-title"><h2 style="margin:0">Skills</h2><div style="color:var(--muted);font-weight:700">• Technologies I use</div></div>
+            <div class="cards">
+                <div class="card">
+                    <div style="font-weight:800">Languages & Tools</div>
+                    <div style="margin-top:10px">
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Node.js</span>
+                        <span class="skill-pill">Java</span>
+                        <span class="skill-pill">Android</span>
+                        <span class="skill-pill">React</span>
+                        <span class="skill-pill">C++</span>
+                    </div>
+                    <div class="small" style="margin-top:10px">Comfortable building apps, backends, scripts and exploring.</div>
+                </div>
+
+                <div class="card">
+                    <div style="font-weight:800">Soft skills</div>
+                    <div style="margin-top:10px">
+                        <span class="skill-pill">Problem solving</span>
+                        <span class="skill-pill">Learning quickly</span>
+                        <span class="skill-pill">Teamwork</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="font-weight:800">Tools</div>
+                    <div style="margin-top:10px">
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Obsidian</span>
+                        <span class="skill-pill">JetBrains</span>
+                        <span class="skill-pill">VS</span>
+                        <span class="skill-pill">Android Studio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-title"><h2 style="margin:0">Projects</h2><div style="color:var(--muted);font-weight:700">• Small projects that show my interests</div></div>
+            <div class="cards">
+
+                <article class="card">
+                    <div class="project-thumb">ReFind — Lost & Found</div>
+                    <div class="project-meta">
+                        <div style="font-weight:800">ReFind (Web + Mobile)</div>
+                        <div class="small">Digital lost&found service with search, filtering, chat between finder & owner, and map location. Built as a demo product (frontend + Node/Express backend).</div>
+                        <div class="project-actions">
+                            <button class="link-btn" onclick="openModal('ReFind','A lost & found platform. Features: search, filter, chat, map. Tech: React, Node.js, Express, PostgreSQL (demo).')">Details</button>
+                            <a class="link-btn" href="#" onclick="openExternal('https://github.com/NureTarasovRostyslav/ReFind')">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-thumb">Training Notes</div>
+                    <div class="project-meta">
+                        <div style="font-weight:800">Training Notes</div>
+                        <div class="small">A centralized web platform for planning fitness training sessions, tracking results, and sharing custom exercise plans.</div>
+                        <div class="project-actions">
+                            <button class="link-btn" onclick="openModal('Note-taking App','Features: add/edit/delete notes about trainings, see through training history and analyze it, plan your fitness exercises. Tech: Node.js, JS Express, PostgreSQL.')">Details</button>
+                            <a class="link-btn" href="#" onclick="openExternal('https://github.com/loppify/training-notes')">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="project-thumb">Schedule</div>
+                    <div class="project-meta">
+                        <div style="font-weight:800">Schedule</div>
+                        <div class="small">A desktop application designed using C# and the .NET framework for efficient personal time management, allowing users to schedule, track, and manage one-time and recurring maintenance events.</div>
+                        <div class="project-actions">
+                            <button class="link-btn" onclick="openModal('Schedule','This project focused on robust software design, showcasing the application of fundamental computer science principles. Tech: OOP, C#, .NET.')">Details</button>
+                            <a class="link-btn" href="#" onclick="openExternal('https://github.com/loppify/ScheduleCurseWork')">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-title"><h2 style="margin:0">Contact</h2><div style="color:var(--muted);font-weight:700">• Let’s work together</div></div>
+            <div class="contact-grid">
+                <div class="card">
+                    <div style="font-weight:800">Want to hire me?</div>
+                    <p class="small">I’m open to junior/mid developer roles. Send a short message with the role and I'll reply.</p>
+                    <div style="margin-top:12px">
+                        <div class="small"><strong>Email</strong><br/><a href="mailto:rostyslav.tarasov.l@gmail.com">rostyslav.tarasov.l@gmail.com</a></div>
+                        <div class="small" style="margin-top:8px"><strong>Phone Number</strong><br/>+(380) 96-695-3384 </div>
+                        <div class="small" style="margin-top:8px"><strong>Telegram</strong><br/><a href="https://t.me/nero_lt">@nero_lt</a></div>
+                        <div class="small" style="margin-top:8px"><strong>Discord</strong><br/><a href="https://discord.com/users/652505584947429387">@loppifly</a></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <footer>
+            Built with ❤️ • Available on <a href="https://github.com/loppify">GitHub</a>
+        </footer>
+
+    </main>
+</div>
+
+<!-- Modal template -->
+<template id="modalT">
+    <div class="modal-back">
+        <div class="modal">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:800" id="modalTitle">Title</div>
+                <button onclick="closeModal()" class="link-btn">Close</button>
+            </div>
+            <div id="modalBody" style="margin-top:12px;color:var(--muted)">Body</div>
+        </div>
+    </div>
+</template>
+
+<script>
+    const phrases = [
+        'Aspiring Developer',
+        'I build Python & Web tools',
+        'I love web3 & AI'
+    ];
+
+    let pIndex = 0;
+    let ch = 0;
+    let forward = true;
+    const typedEl = document.getElementById('typed');
+
+    function tick() {
+        const s = phrases[pIndex];
+
+        if (forward) {
+            typedEl.classList.remove('blink'); // cursor solid while typing
+            ch++;
+            if (ch > s.length) {
+                forward = false;
+                typedEl.classList.add('blink');  // blink when paused
+                setTimeout(tick, 1600);
+                return;
+            }
+        } else {
+            typedEl.classList.remove('blink'); // solid while deleting
+            ch--;
+            if (ch < 0) {
+                forward = true;
+                pIndex = (pIndex + 1) % phrases.length;
+                ch = 0;
+            }
+        }
+
+        typedEl.textContent = s.substring(0, Math.max(ch, 0));
+        setTimeout(tick, forward ? 90 : 50);
+    }
+
+    tick();
+
+
+
+    // Modal
+    function openModal(title, body){
+        const tpl = document.getElementById('modalT').content.cloneNode(true);
+        tpl.querySelector('#modalTitle').textContent = title;
+        tpl.querySelector('#modalBody').textContent = body;
+        document.body.appendChild(tpl);
+    }
+    function closeModal(){
+        const back = document.querySelector('.modal-back');
+        if(back) back.remove();
+    }
+
+    // Open external link helper
+    function openExternal(u){ window.open(u,'_blank'); }
+
+    // Contact handler (fake) — shows a friendly message
+    function handleContact(e){
+        e.preventDefault();
+        const name = document.getElementById('name').value || 'Friend';
+        openModal('Message sent', `Thanks ${name}! I received your message (demo).`);
+        // In a real site, replace with fetch() to your backend or Formspree/Netlify forms
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+            const href = a.getAttribute('href');
+            if(href.length>1){
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({behavior:'smooth'});
+            }
+        })
+    })
+</script>
+</body>
+</html>
